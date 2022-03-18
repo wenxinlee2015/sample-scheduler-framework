@@ -1,4 +1,4 @@
-module github.com/cnych/sample-scheduler-framework
+module github.com/wenxinlee2015/sample-scheduler-framework
 
 go 1.13
 
