@@ -1,7 +1,7 @@
 package plugins
 
 import (
-	"fmt"
+	"context"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/klog"
@@ -26,23 +26,14 @@ func (s *Sample) Name() string {
 	return Name
 }
 
-func (s *Sample) PreFilter(pc *framework.PluginContext, pod *v1.Pod) *framework.Status {
+func (s *Sample) PreFilter(ctx context.Context, pod *v1.Pod) *framework.Status {
 	klog.V(3).Infof("prefilter pod: %v", pod.Name)
 	return framework.NewStatus(framework.Success, "")
 }
 
-func (s *Sample) Filter(pc *framework.PluginContext, pod *v1.Pod, nodeName string) *framework.Status {
+func (s *Sample) Filter(ctx context.Context, pod *v1.Pod, nodeName string) *framework.Status {
 	klog.V(3).Infof("filter pod: %v, node: %v", pod.Name, nodeName)
 	return framework.NewStatus(framework.Success, "")
-}
-
-func (s *Sample) PreBind(pc *framework.PluginContext, pod *v1.Pod, nodeName string) *framework.Status {
-	if nodeInfo, ok := s.handle.NodeInfoSnapshot().NodeInfoMap[nodeName]; !ok {
-		return framework.NewStatus(framework.Error, fmt.Sprintf("prebind get node info error: %+v", nodeName))
-	} else {
-		klog.V(3).Infof("prebind node info: %+v", nodeInfo.Node())
-		return framework.NewStatus(framework.Success, "")
-	}
 }
 
 //type PluginFactory = func(configuration *runtime.Unknown, f FrameworkHandle) (Plugin, error)
