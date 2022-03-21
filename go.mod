@@ -7,7 +7,7 @@ require (
 	k8s.io/apimachinery v0.18.4
 	k8s.io/component-base v0.18.4
 	k8s.io/klog v1.0.0
-	k8s.io/kubernetes v0.0.0-00010101000000-000000000000
+	k8s.io/kubernetes v1.18.4
 )
 
 replace (
@@ -31,7 +31,7 @@ replace (
 	k8s.io/kube-scheduler => k8s.io/kube-scheduler v0.18.4
 	k8s.io/kubectl => k8s.io/kubectl v0.18.4
 	k8s.io/kubelet => k8s.io/kubelet v0.18.4
-	k8s.io/kubernetes => k8s.io/kubernetes v1.18.4
+	//k8s.io/kubernetes => k8s.io/kubernetes v1.18.4
 	k8s.io/legacy-cloud-providers => k8s.io/legacy-cloud-providers v0.18.4
 	k8s.io/metrics => k8s.io/metrics v0.18.4
 	k8s.io/mount-utils => k8s.io/mount-utils v0.18.4
